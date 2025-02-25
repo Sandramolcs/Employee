@@ -1,0 +1,69 @@
+create database  emp;
+use emp;
+
+create table empp(Employee_id int primary key auto_increment,
+					FullName varchar(100) not null,
+                    Department varchar(100) not null,
+                    Position varchar(100) not null,
+                    Date_of_joining date not null,
+                    salary int not null,
+                    city varchar(100) not null,
+                    status enum('active','inactive','on leave'));
+select * from  empp;
+
+insert into empp(FullName,Department,Position,Date_of_joining,salary,city,status)values("Alice Johnson","HR","Manager","2015-06-01",700000,"New York","Active");
+insert into empp(FullName,Department,Position,Date_of_joining,salary,city,status)values("Bob Smith","IT","Developer","2018-03-15",850000,"Los Angeles","Active");
+insert into empp(FullName,Department,Position,Date_of_joining,salary,city,status)values("Charlie Brown","IT","Developer","2019-07-21",820000,"Chicago","On Leave");
+insert into empp(FullName,Department,Position,Date_of_joining,salary,city,status)values("Daisy Ridley","Finance","Analyst","2020-01-10",600000,"New York","Active");
+insert into empp(FullName,Department,Position,Date_of_joining,salary,city,status)values("Ethan Hunt","IT","Team Lead","2014-11-05",950000,"Chicago","Active");
+insert into empp(FullName,Department,Position,Date_of_joining,salary,city,status)values("Fiona Gallagher","HR","Recru","2016-08-19",580000,"San Francisco","Inactive");
+insert into empp(FullName,Department,Position,Date_of_joining,salary,city,status)values("George Clarkson","Finance","Manager","2013-02-11",900000,"Miami","Active");
+insert into empp(FullName,Department,Position,Date_of_joining,salary,city,status)values("Hannah Cooper","IT","Developer","2021-05-22",800000,"New York","On Leave");
+insert into empp(FullName,Department,Position,Date_of_joining,salary,city,status)values("Lan Wright","Sales","Executive","2017-09-30",720000,"Boston","Active");
+insert into empp(FullName,Department,Position,Date_of_joining,salary,city,status)values("Jane Eyre","HR","Manager","2012-12-01",750000,"San Francisco","Active");
+
+select * from empp where status="Active";
+
+select * from empp where Date_of_joining>"2018-01-01";
+
+select count(*) as total from empp where Department="IT";
+
+select avg(salary) from empp where Department="IT";
+
+select avg(salary) from empp where Department="HR";
+
+select avg(salary) from empp where Department="Finance";
+
+select avg(salary) from empp where Department="Sales";
+
+select * from empp where Salary>=800000;
+
+select count(*) as EachCity,city from empp group by city;
+
+select * from empp where status="On Leave";
+
+select max(salary) from empp;
+
+select * from empp where Date_of_joining>="2012-12-01" and Date_of_joining<="2020-01-10";
+
+select * from empp order by Date_of_joining desc;
+
+select * from empp where FullName like 'A%';
+
+select sum(salary) as total_salary from empp where Department="HR";
+
+select count(*) as number_of_employess,status from empp where Department="IT" group by status;
+
+select * from empp where city="New York" or city="Chicago";
+
+select * from empp where salary>=600000 and salary<=900000;
+
+select * from empp where Position="Manager";
+
+select avg(Date_of_joining) as  avg_years from empp;
+
+select * from empp where Position="Developer";
+
+select distinct city from empp;
+
+select * from empp where Department not in("HR","IT") ;
